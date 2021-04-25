@@ -1,19 +1,15 @@
 import React , {useState,useEffect} from 'react'
 import axios from 'axios'
 
-const TeamsContext = React.createContext({
-    teams : [],
-    setTeams : () => {}
-})
+const TeamsContext = React.createContext()
 export default function Store({children}) {
-    const [teams, setTeams] = useState(TeamsContext)
+    const [teams, setTeams] = useState([])
     useEffect(() => {
-        let mounted = true
         axios.get('https://api.squiggle.com.au/?q=teams')
         .then(response =>{
             setTeams(response.data.teams)
         })
-        return () => mounted = false;
+        
     }, []);
     return (
         <TeamsContext.Provider value={[teams, setTeams]}>

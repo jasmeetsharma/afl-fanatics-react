@@ -82,42 +82,43 @@ export default class Matches extends Component {
             </li>
             )
         }
-        let teamsRadio =teams._currentValue2 === undefined ? teams.map((t)=>{
+        let teamsRadio = teams.map((t)=>{
             return(
                 <li className='col' key={t.id}>    
                     <input id={`radio-team-${t.id}`}  type='radio' name='teams' value={t.id} checked={selectTeam == t.id} onChange={this.handleTeamChange}/>
                     <label htmlFor={`radio-team-${t.id}`}>
-                    <img src={`https://squiggle.com.au/${t.logo}`}/>
+                    <img src={`https://squiggle.com.au/${t.logo}`} alt={t.name}/>
                     </label>
                 </li>
             )
-        }):<div></div>
+        })
         return (
             <>
             <div className="hero-image">
                 <div className="hero-text">
                     <h1 style={{fontSize:"64px"}}>Matches</h1>
                 </div>
-                <div className="btn-group mr-2 match-filter" role="group" aria-label="filter group">
+                <div className="btn-group mr-2 center match-filter" role="group" aria-label="filter group">
                     <button type="button" className="btn btn-secondary" value='round' onClick={this.toggleRounds}>
                     <i className="icofont-football-american"></i>
                     By Round</button>
                     <button type="button" className="btn btn-secondary" value='club' onClick={this.toggleRounds}>
                     <i className="icofont-team"></i>
                     By Club</button>
+                    <div className="year-dropdown">
+                        <select value={selectYear} onChange={this.handleChange}>
+                            <option value={year}>AFL {year}</option>
+                            <option value={year-1}>AFL {year-1}</option>
+                            <option value={year-2}>AFL {year-2}</option>
+                            <option value={year-3}>AFL {year-3}</option>
+                            <option value={year-4}>AFL {year-4}</option>
+                            <option value={year-5}>AFL {year-5}</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div className='container'>
-                <div className="banner-dd row">
-                    <select value={selectYear} onChange={this.handleChange}>
-                        <option value={year}>AFL {year}</option>
-                        <option value={year-1}>AFL {year-1}</option>
-                        <option value={year-2}>AFL {year-2}</option>
-                        <option value={year-3}>AFL {year-3}</option>
-                        <option value={year-4}>AFL {year-4}</option>
-                        <option value={year-5}>AFL {year-5}</option>
-                    </select>
-                </div>
+                
                 {
                     byRound &&
                     <ul className='rounds-toolbar row'>

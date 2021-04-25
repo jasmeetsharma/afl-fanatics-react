@@ -10,7 +10,7 @@ export default class Standings extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`https://api.squiggle.com.au/?q=standings;year=2020`)
+        axios.get(`https://api.squiggle.com.au/?q=standings;${(new Date()).getFullYear()}`)
         .then(response => {
             this.setState({
                 standings : response.data.standings
@@ -19,13 +19,14 @@ export default class Standings extends Component {
     }
     render() {
         const {standings} = this.state
+        const {tPage} = this.props
         return (
             <div>
-                <div className="hero-image">
+                {!tPage && <div className="hero-image">
                     <div className="hero-text">
                         <h1>Standings</h1>
                     </div>
-                </div>
+                </div>}
                 <div className="container standings">
                     <table className="standings-table table table-striped">
                         <thead className="thead-dark">
@@ -37,8 +38,10 @@ export default class Standings extends Component {
                                 <th scope="col">Won</th>
                                 <th scope="col">Lost</th>
                                 <th className="desktop-only" scope="col">Drawn</th>
-                                <th className="desktop-only" scope="col">Played for</th>
+                                {!tPage &&
+                                     <><th className="desktop-only" scope="col">Played for</th>
                                 <th className="desktop-only" scope="col">Played against</th>
+                                </>}
                             </tr>
                         </thead>
                         <tbody>
@@ -53,8 +56,11 @@ export default class Standings extends Component {
                                     <td>{standing.wins }</td>
                                     <td>{standing.losses }</td>
                                     <td className="desktop-only">{standing.draws }</td>
-                                    <td className="desktop-only">{standing.for }</td>
+                                    {!tPage &&
+                                     <><td className="desktop-only">{standing.for }</td>
                                     <td className="desktop-only">{standing.against }</td>
+                                    </>
+                                    }
                                 </tr>
                                 )
                                 }

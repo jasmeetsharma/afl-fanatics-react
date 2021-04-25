@@ -172,19 +172,19 @@ li{
 .hero-text p, .hero-text p a {
     font-size: 1.5vw;
 }
-.banner-dd{
+.year-dropdown{
   display: inline;
-  margin: 0 10px;
-  position: relative;
-  top: 12px;
 }
-.banner-dd select {
-  border-radius: 6px;
-  height: 2rem;
+.year-dropdown select {
+  height: 2.4rem;
   font-size: 1rem;
   color: #353434;
   text-align: center;
   text-align-last: center;
+  vertical-align: bottom;
+}
+.year-dropdown select:focus{
+  border: none;
 }
 .team-landing .container a{
   color: #232222;
@@ -329,8 +329,8 @@ li{
 }
 .teams-toolbar li{
   padding: 0 0.3rem;
+  min-height: 4.5rem;
 }
-
 .teams-toolbar label img:hover {
   height: 2.5rem;
   width: 2.5rem;
@@ -341,6 +341,12 @@ li{
   width: 2.5rem;
 }
 
+.match-filter{
+  display: block;
+  text-align: center;
+  top:1rem;
+  margin-bottom: 1.2rem;
+}
 .match-filter .btn{
   background-color: #fff;
   color:#000;
@@ -351,4 +357,40 @@ li{
 .match-filter img{
   height:2rem;
   width:2rem
+}
+/* Team Landing Page */
+
+.hero-text h1{
+  display: inline-block;
+}
+.banner-logo{
+  max-width: 120px;
+  max-height: 120px;
+  margin: 20% 0%;
+}
+.team-logo-banner {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  background: #fff;
+  border-radius: 100px;
+  vertical-align: middle;
+}
+
+.hero-text h1 {
+  padding-right: 3%;
+}
+
+aside{
+  float: right;
+  width: 40%;
+  display: inline-block;
+}
+
+.team-landing-content {
+  display: inline-block;
+}
+
+.team-games-section {
+  display: inline-block;width: 60%;
 }

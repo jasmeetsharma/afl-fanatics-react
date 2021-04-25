@@ -22,9 +22,6 @@ function Header() {
                                     <Link to="/teams" className="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">TEAMS</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/tips" className="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">TIPS</Link>
-                                </li>
-                                <li className="nav-item">
                                     <Link to="/standings" className="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">STANDINGS</Link>
                                 </li>
                             </ul>

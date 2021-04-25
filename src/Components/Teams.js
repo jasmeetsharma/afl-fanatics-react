@@ -1,50 +1,28 @@
 import React, { useContext } from 'react'
 import TeamCard from './TeamCard'
 import {TeamsContext} from '../Store'
-
-// import React, { Component } from 'react'
-
-// export default class Teams extends Component {
-//     //static contextType = TeamsContext
-//     render() {
-//        // const [teams] = this.context
-//         return (
-//             <TeamsContext.Consumer>
-//                 {({teams,setTeams}) => (
-//                     <section className="select-team container">
-//                     <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto">
-//                         <h5 className="display-4">Select your Team</h5>
-//                     </div>
-//                     <ul className="row list-group-horizontal justify-content-center">
-//                         {teams.map(team => <TeamCard key={team.id} team={team} />)}
-//                     </ul>
-//                     </section>
-//                 )}
-//             </TeamsContext.Consumer>
-//         )
-//     }
-// }
+import {useLocation} from 'react-router-dom'
+import TeamLanding from './TeamLanding'
+import { GamesContext } from '../GamesStore'
 
 
 export default function Teams() {
     const [teams] = useContext(TeamsContext)
+    
+    let query= new URLSearchParams(useLocation().search);
 
-
-    // useEffect(() => {
-    //     let mounted = false
-    //     axios.get('https://api.squiggle.com.au/?q=teams')
-    //     .then(response => response.data.teams)
-    //     .then(setTeams)
-    //     .finally(()=>  mounted = false)
-    // }, [axios,setTeams]);
     return (
+        query.get('id') === null ?
         <section className="select-team container">
             <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto">
                 <h5 className="display-4">Select your Team</h5>
             </div>
             <ul className="row list-group-horizontal justify-content-center">
-                {teams._currentValue2 === undefined ? teams.map(team => <TeamCard key={team.id} team={team} />): null}
+                { teams.map(team => <TeamCard key={team.id} team={team} />)}
             </ul>
         </section>
+        :
+        teams.length!=0?<TeamLanding teams={teams} tid={query.get('id')}></TeamLanding>:null
+        
     )
 }
