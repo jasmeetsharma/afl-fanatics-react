@@ -33,9 +33,9 @@ export default class GamePanel extends Component {
                     <img src={`https://squiggle.com.au/${hteam.logo}`} className="img-rounded team-logo" alt={hteam.name} />
                     <div>
                         <h4 className="display-4 d-none d-md-block d-lg-block d-xl-block" >{hteam.name}</h4>
+                        {game.complete == 100 && <p >{game.hscore}</p> }
                     </div>
-                    <div className="match-details">
-                        {game.complete != 100 &&
+                    <div className="match-details">                        {game.complete != 100 &&
                             <p className="match-time">
                                 {new Intl.DateTimeFormat('en-AU',timeOptions).format((new Date(game.date+''+game.tz)))}      
                             </p>
@@ -49,6 +49,7 @@ export default class GamePanel extends Component {
                     </div>
                     <div>
                         <h4 className="display-4 d-none d-md-block d-lg-block d-xl-block" >{ateam.name}</h4>
+                        {game.complete == 100 && <p >{game.ascore}</p> }
                     </div>
                     <img src={`https://squiggle.com.au/${ateam.logo}`} className="img-rounded team-logo" alt={ateam.name}/>
                 </div>
