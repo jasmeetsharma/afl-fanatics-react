@@ -1,3 +1,12 @@
+:root{
+  font-size: 16px;
+}
+@media only screen and (max-width:768px) {
+  :root{
+    font-size: 12px;
+  }
+  
+}
 /* Header*/
 a.navbar-brand {
   margin: 0px;
@@ -370,8 +379,8 @@ li{
 }
 .team-logo-banner {
   display: inline-block;
-  height: 200px;
-  width: 200px;
+  height: 14rem;
+  width: 14rem;
   background: #fff;
   border-radius: 100px;
   vertical-align: middle;
@@ -380,8 +389,19 @@ li{
 .hero-text h1 {
   padding-right: 3%;
 }
+@media only screen and (max-width:768px) {
+  .team-landing .hero-text{
+    top: 80%;
+  }
+  .team-logo-banner {
+    display: block;
+    margin: auto;
+  }
 
-aside{
+}
+  
+
+/* aside{
   float: right;
   width: 40%;
   display: inline-block;
@@ -393,4 +413,4 @@ aside{
 
 .team-games-section {
   display: inline-block;width: 60%;
-}
+} */

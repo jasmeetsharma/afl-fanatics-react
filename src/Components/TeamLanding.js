@@ -18,7 +18,7 @@ export default function TeamLanding(props) {
     lastGame = lastGame[lastGame.length - 1]
     return (
         <div>
-            <section>
+            <section className='team-landing'>
                 <div className="hero-image">
                     <div className="hero-text">
                         <h1>{team[0].name}</h1>
@@ -28,14 +28,16 @@ export default function TeamLanding(props) {
                     </div>
                 </div>
             </section>
-            <div className='team-landing-content'>
+            <div className='container' style={{ marginTop: '50px' }}>
                 <section className='team-games-section'>
+                    <h2 className="display-3">Next Match</h2>
                     {games.length != 0 && <GamePanel game={nextGame} hid={nextGame.hteamid} aid={nextGame.ateamid} teams={teams} />}
+                    <h2 className="display-3">Last Match</h2>
                     {games.length != 0 && <GamePanel game={lastGame} hid={lastGame.hteamid} aid={lastGame.ateamid} teams={teams} />}
                 </section>
-                <aside>
+                {/* <aside>
                     <Standings tPage='true'></Standings>
-                </aside>
+                </aside> */}
             </div>
         </div>
     )

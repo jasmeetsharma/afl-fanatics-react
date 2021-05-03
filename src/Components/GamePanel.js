@@ -28,7 +28,7 @@ export default class GamePanel extends Component {
         }
         return (
             <div className="panel panel-default">
-                <div className="d-block d-sm-block d-md-none d-lg-none d-xl-none text-center mb-2"><b>{game.hteam.name}</b> v <b>{game.ateam.name}</b></div>
+                <div className="d-block d-sm-block d-md-none d-lg-none d-xl-none text-center mb-2"><b>{hteam.name}</b> v <b>{ateam.name}</b></div>
                 <div className="panel-body row justify-content-center align-items-center">
                     <img src={`https://squiggle.com.au/${hteam.logo}`} className="img-rounded team-logo" alt={hteam.name} />
                     <div>
@@ -37,11 +37,11 @@ export default class GamePanel extends Component {
                     <div className="match-details">
                         {game.complete != 100 &&
                             <p className="match-time">
-                                {new Intl.DateTimeFormat('en-AU',timeOptions).format((new Date(game.date+' '+game.tz)))}      
+                                {new Intl.DateTimeFormat('en-AU',timeOptions).format((new Date(game.date+''+game.tz)))}      
                             </p>
                         }
                         <p className="match-date">
-                            {new Intl.DateTimeFormat('en-AU',dateOptions).format((new Date(game.date+' '+game.tz)))}
+                            {new Intl.DateTimeFormat('en-AU',dateOptions).format((new Date(game.date+''+game.tz)))}
                         </p>
                         {game.complete != 100 && <p className="match-venue">{game.venue}</p>}
                         {/* <p className="match-venue">{game.roundname}</p> */}

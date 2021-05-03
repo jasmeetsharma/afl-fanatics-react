@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { TeamsContext } from '../Store'
 import GamePanel from './GamePanel'
-import football_icon from '../assets/football-american.svg'
 
 export default class Matches extends Component {
     static contextType = TeamsContext
