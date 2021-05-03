@@ -35,13 +35,14 @@ export default class GamePanel extends Component {
                         <h4 className="display-4 d-none d-md-block d-lg-block d-xl-block" >{hteam.name}</h4>
                         {game.complete == 100 && <p >{game.hscore}</p> }
                     </div>
-                    <div className="match-details">                        {game.complete != 100 &&
+                    <div className="match-details">                        
+                        {game.complete != 100 &&
                             <p className="match-time">
-                                {new Intl.DateTimeFormat('en-AU',timeOptions).format((new Date(game.date+''+game.tz)))}      
+                                {new Intl.DateTimeFormat('en-AU',timeOptions).format((new Date((game.date).replace('/ /g ','T')+'Z'+game.tz)))}      
                             </p>
                         }
                         <p className="match-date">
-                            {new Intl.DateTimeFormat('en-AU',dateOptions).format((new Date(game.date+''+game.tz)))}
+                            {new Intl.DateTimeFormat('en-AU',dateOptions).format((new Date((game.date).replace('/ /g','T')+'Z'+game.tz)))}
                         </p>
                         {game.complete != 100 && <p className="match-venue">{game.venue}</p>}
                         {/* <p className="match-venue">{game.roundname}</p> */}
