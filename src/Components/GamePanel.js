@@ -38,11 +38,11 @@ export default class GamePanel extends Component {
                     <div className="match-details">                        
                         {game.complete != 100 &&
                             <p className="match-time">
-                                {new Intl.DateTimeFormat('en-AU',timeOptions).format((new Date((game.date).replace('/ /g ','T')+'Z'+game.tz)))}      
+                                {new Intl.DateTimeFormat('en-AU',timeOptions).format((new Date('08/11/2020 '+(game.date).split(' ')[1]+' '+game.tz)))}      
                             </p>
                         }
                         <p className="match-date">
-                            {new Intl.DateTimeFormat('en-AU',dateOptions).format((new Date((game.date).replace('/ /g','T')+'Z'+game.tz)))}
+                            {new Intl.DateTimeFormat('en-AU',dateOptions).format((new Date((game.date).split(' ')[0])))}
                         </p>
                         {game.complete != 100 && <p className="match-venue">{game.venue}</p>}
                         {/* <p className="match-venue">{game.roundname}</p> */}
