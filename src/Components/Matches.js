@@ -46,14 +46,14 @@ export default class Matches extends Component {
 
     handleRoundChange = (e) => {
         this.setState({
-            filteredGames : this.state.games.filter(g => g.round === e.target.value),
+            filteredGames : this.state.games.filter(g => g.round+'' === e.target.value),
             selectRound : e.target.value
         })
     }
     
     handleTeamChange = (e) => {
         this.setState({
-            filteredGames : this.state.games.filter(g => (g.ateamid === e.target.value || g.hteamid === e.target.value)),
+            filteredGames : this.state.games.filter(g => (g.ateamid+"" === e.target.value || g.hteamid+'' === e.target.value)),
             selectTeam : e.target.value
         })
     }
