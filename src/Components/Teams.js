@@ -3,7 +3,6 @@ import TeamCard from './TeamCard'
 import {TeamsContext} from '../Store'
 import {useLocation} from 'react-router-dom'
 import TeamLanding from './TeamLanding'
-import { GamesContext } from '../GamesStore'
 
 
 export default function Teams() {
@@ -22,7 +21,7 @@ export default function Teams() {
             </ul>
         </section>
         :
-        teams.length!=0?<TeamLanding teams={teams} tid={query.get('id')}></TeamLanding>:null
+        teams.length!==0?<TeamLanding teams={teams} tid={query.get('id')}></TeamLanding>:null
         
     )
 }

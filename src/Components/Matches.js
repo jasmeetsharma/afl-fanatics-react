@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { TeamsContext } from '../Store'
-import GamePanel from './GamePanel'
+import GameCard from './GameCard'
 
 export default class Matches extends Component {
     static contextType = TeamsContext
@@ -24,7 +24,7 @@ export default class Matches extends Component {
         .then(response =>{
             this.setState({
                 games:response.data.games,
-                filteredGames : response.data.games.filter(g => g.round == 1),
+                filteredGames : response.data.games.filter(g => g.round === 1),
                 selectRound : 1
             })
         })
@@ -37,7 +37,7 @@ export default class Matches extends Component {
         .then(response =>{
             this.setState({
                 games:response.data.games,
-                filteredGames : response.data.games.filter(g => g.round == 1),
+                filteredGames : response.data.games.filter(g => g.round === 1),
                 selectRound : 1,
                 selectTeam : 0
             })
@@ -46,14 +46,14 @@ export default class Matches extends Component {
 
     handleRoundChange = (e) => {
         this.setState({
-            filteredGames : this.state.games.filter(g => g.round == e.target.value),
+            filteredGames : this.state.games.filter(g => g.round === e.target.value),
             selectRound : e.target.value
         })
     }
     
     handleTeamChange = (e) => {
         this.setState({
-            filteredGames : this.state.games.filter(g => (g.ateamid == e.target.value || g.hteamid == e.target.value)),
+            filteredGames : this.state.games.filter(g => (g.ateamid === e.target.value || g.hteamid === e.target.value)),
             selectTeam : e.target.value
         })
     }
@@ -70,12 +70,12 @@ export default class Matches extends Component {
         const {year,selectYear,games,filteredGames,selectRound,selectTeam,byRound,byClub} = this.state
         const [teams] = this.context
         let roundOptions = []
-        let finalGame = (games.filter(g => g.is_grand_final == 1))
+        let finalGame = (games.filter(g => g.is_grand_final === 1))
         let totalRounds = finalGame.length === 0 ? 23 : finalGame[0].round
         for (let index = 1; index <= totalRounds; index++) {
             roundOptions.push(
              <li className='col' key={index}>  
-                <input id={`round-${index}`}  type='radio' name='rounds' value={index} checked={selectRound == index} onChange={this.handleRoundChange}/>
+                <input id={`round-${index}`}  type='radio' name='rounds' value={index} checked={selectRound === index} onChange={this.handleRoundChange}/>
                 <label htmlFor={`round-${index}`}>
                 {index}</label>
             </li>
@@ -84,7 +84,7 @@ export default class Matches extends Component {
         let teamsRadio = teams.map((t)=>{
             return(
                 <li className='col' key={t.id}>    
-                    <input id={`radio-team-${t.id}`}  type='radio' name='teams' value={t.id} checked={selectTeam == t.id} onChange={this.handleTeamChange}/>
+                    <input id={`radio-team-${t.id}`}  type='radio' name='teams' value={t.id} checked={selectTeam === t.id} onChange={this.handleTeamChange}/>
                     <label htmlFor={`radio-team-${t.id}`}>
                     <img src={`https://squiggle.com.au/${t.logo}`} alt={t.name}/>
                     </label>
@@ -131,7 +131,7 @@ export default class Matches extends Component {
                     </ul>
                 }
             </div>
-            {filteredGames.map(game => <GamePanel key= {game.id} game={game} hid={game.hteamid} aid={game.ateamid} ></GamePanel>)}
+            {filteredGames.map(game => <GameCard key= {game.id} game={game}/>)}
             </>
         )
     }

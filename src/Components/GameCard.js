@@ -1,33 +1,23 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import { TeamsContext } from '../Store'
 
-export default class GamePanel extends Component {
-    static contextType = TeamsContext
-    constructor(props) {
-        super(props)
-        this.state = {
-            // hteam:this.context.teams.find((team)=> team.id === this.props.hid),
-            // ateam:this.context.teams.find((team)=> team.id === this.props.aid)
-        }
+function GameCard({game}) {
+    const [teams] = useContext(TeamsContext)
+    const hteam = teams.find((team)=> team.id === game.hteamid)
+    const ateam = teams.find((team)=> team.id === game.ateamid)
+    const timeOptions = {
+        hour: 'numeric', minute: 'numeric',
+        timeZone: 'Australia/Sydney',
+        timeZoneName: 'short'
     }
-
-    render() {
-        const { game} = this.props
-        const [teams] = this.context
-        // const { hteam,ateam } = this.state
-        let hteam = teams.find((team)=> team.id === this.props.hid)
-        let ateam = teams.find((team)=> team.id === this.props.aid)
-        let timeOptions = {
-            hour: 'numeric', minute: 'numeric',
-            timeZone: 'Australia/Sydney',
-            timeZoneName: 'short'
-        }
-        let dateOptions = {
-            weekday: 'long', month: 'long',
-            day: 'numeric',
-        }
-        return (
-            <div className="panel panel-default">
+    const dateOptions = {
+        weekday: 'long', month: 'long',
+        day: 'numeric',
+    }
+    return (
+        <div className="panel panel-default">
+            {hteam && ateam &&
+            <>
                 <div className="d-block d-sm-block d-md-none d-lg-none d-xl-none text-center mb-2"><b>{hteam.name}</b> v <b>{ateam.name}</b></div>
                 <div className="panel-body row justify-content-center align-items-center">
                     <img src={`https://squiggle.com.au/${hteam.logo}`} className="img-rounded team-logo" alt={hteam.name} />
@@ -54,7 +44,10 @@ export default class GamePanel extends Component {
                     </div>
                     <img src={`https://squiggle.com.au/${ateam.logo}`} className="img-rounded team-logo" alt={ateam.name}/>
                 </div>
-            </div>
-        )
-    }
+            </>
+            }
+        </div>
+    )
 }
+
+export default GameCard
