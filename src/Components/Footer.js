@@ -3,7 +3,7 @@ import React from 'react'
 function Footer() {
     return (
         <div className="footer">
-            <p>2020 © AFL Fanatics</p>
+            <p>2023 © AFL Fanatics</p>
         </div>
     )
 }

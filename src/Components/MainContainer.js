@@ -5,7 +5,6 @@ import { Route } from 'react-router-dom'
 import Store from '../Store'
 import Standings from './Standings'
 import Matches from './Matches'
-import TeamLanding from './TeamLanding'
 import { GamesProvider } from '../GamesStore'
 
 function MainContainer() {

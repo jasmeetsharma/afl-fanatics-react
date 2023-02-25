@@ -1,5 +1,5 @@
 import axios from 'axios';
-import react,{useState,createContext,useEffect} from 'react'
+import {useState,createContext,useEffect} from 'react'
 
 export const GamesContext = createContext()
 
