@@ -19,10 +19,18 @@ export default function Homepage() {
             </div>
             <div className="container" style={{ marginTop: '50px' }}>
                 <div className="page-content">
-                    <h2 className="display-3">Latest Results</h2>
-                    {latestResults.length !== 0 ? <GameCard game={latestResults[0]} /> : <div className="panel panel-default"></div>}
-                    <h2 className="display-3">Next Match</h2>
-                    {upcomingGames.length !== 0 ? <GameCard game={upcomingGames[0]} /> : <div className="panel panel-default"></div>}
+                    {latestResults.length !== 0 && 
+                        <>
+                            <h2 className="display-3">Latest Results</h2>
+                            <GameCard game={latestResults[0]} />
+                        </>
+                    }
+                    {upcomingGames.length !== 0 &&
+                        <>
+                            <h2 className="display-3">Next Match</h2>
+                            <GameCard game={upcomingGames[0]} /> 
+                        </>
+                    }
                 </div >
             </div >
         </section>
