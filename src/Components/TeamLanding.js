@@ -4,6 +4,7 @@ import GameCard from './GameCard'
 
 export default function TeamLanding(props) {
     const { teams, tid } = props
+
     let team = teams.filter((tt) => tt.id === tid)
     const [games] = useContext(GamesContext)
     let nextGame, lastGame
